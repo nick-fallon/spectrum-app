@@ -1,9 +1,19 @@
-import Image from "next/image";
+import {EventCard} from "@/components/event/event-card/EventCard";
+import calendar from '../data/data.json';
+import {IEventCard} from "@/types/event.interface";
 
 export default function Home() {
   return (
     <div>
-      <p className="text-sf-pink">Nick Fallon</p>
+        <ul>
+            {
+                calendar.items.map((item: IEventCard) => {
+                    return (
+                        <EventCard key={item.id} props={item} />
+                    )
+                })
+            }
+        </ul>
     </div>
   );
 }
