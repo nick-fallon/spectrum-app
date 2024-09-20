@@ -8,6 +8,7 @@ export interface IEventCard {
     }
     start: IStartEnd;
     end?: IStartEnd;
+    recurringEventId?: string;
 }
 
 interface IStartEnd {
