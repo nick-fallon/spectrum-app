@@ -2,6 +2,9 @@ import {EventCard} from "@/components/event/event-card/EventCard";
 import calendar from '../data/data.json';
 import {IEventCard} from "@/types/event.interface";
 
+/* This could all probably be done on the backend/DB query.
+* Also, orderBy here.
+*/
 const fakeNow = new Date('2024-09-20T06:27:28Z');
 
 // Clone the date to avoid mutating the original
@@ -30,7 +33,7 @@ function getThisWeekEvents(): IEventCard[] {
     return calendar.items.filter(item => {
         const eventDate = new Date(item.start.dateTime);
         return eventDate >= newDate && eventDate <= upcomingSunday;
-    });
+    }).sort((a, b) => new Date(a.start.dateTime) - new Date(b.start.dateTime));
 }
 
 export default function Home() {

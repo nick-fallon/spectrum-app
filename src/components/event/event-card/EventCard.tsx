@@ -7,15 +7,16 @@ export function EventCard({props}: {props: IEventCard}) {
     const startTime = props.start.dateTime ? format(props.start.dateTime, 'MMM dd hh aa yyyy') : '';
     const endTime = props.end?.dateTime ? format(props.end.dateTime, 'MMM dd hh aa yyyy') : '';
     return (
-        <li className="m-2 border-2 border-sf-pink">
+        <li className="m-2 border-2 border-sf-pink p-4">
             <h2>
                 {props.summary}
             </h2>
+            <p>{props.location}</p>
+            <p>Start: {startTime}</p>
+            <p>End: {endTime}</p>
+            <br/>
             <section className="flex flex-col">
                 <div>{parsedDescription}</div>
-                <p>{props.location}</p>
-                <p>Start: {startTime}</p>
-                <p>End: {endTime}</p>
             </section>
         </li>
     )
